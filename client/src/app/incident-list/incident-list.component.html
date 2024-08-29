@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="offset-md-offset-3 col-md-12">
+    <h1>{{title}}</h1>
+      <style>
+        body {
+          background-image: url('assets/images/incident2.png');
+          background-size: cover;
+        }
+      </style>
+      <br />
+      <div class="text-center">
+        <a [routerLink]="['/incident/add']" class="btn btn-primary" role="button">
+          <i class="fas fa-plus-circle"></i> Add Survey
+        </a>
+      </div>
+      <br />
+      <table class="table table-bordered table-striped table-hover">
+        <!-- Header Row -->
+        <tr class="d-flex">
+          <th class="text-center col-3">Incident</th>
+          <th class="text-center col-2">Description</th>
+          <th class="text-center col-3">Date</th>
+          <th class="text-center col-2"></th>
+          <th class="text-center col-2"></th>
+        </tr>
+  
+  
+        <!-- Repeatable Template Row -->
+        <tr class="d-flex" *ngFor="let incident of incidentList">
+        <td class="text-center col-3">{{ incident.incident }}</td>
+        <td class="text-center col-2">{{ incident.description }}</td>
+        <td class="text-center col-3">{{ incident.date }}</td>
+        <td class="text-center col-2">
+          <a [routerLink]="['/incident/edit', incident._id]" class="btn btn-primary btn-sm">
+            <i class="fas fa-pencil-alt"></i> Edit
+          </a>
+        </td>
+        <td class="text-center col-2">
+          <button *ngIf="incident._id" (click)="deleteIncident(incident._id)" class="btn btn-danger btn-sm">
+            <i class="fas fa-trash-alt"></i> Delete
+          </button>
+        </td>
+  
+  
+        </tr>
+      </table>
+    </div>
+  </div>
+  
