@@ -85,7 +85,10 @@ const routeConfig: Routes = [
 
     {path: 'register',
     component: RegisterComponent,
-    title: 'Register'}
+    title: 'Register'},
+    
+   {path: '**', redirectTo: '/' } // Wildcard route for handling invalid paths}
+  
 
 
 ];

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
@@ -9,6 +9,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { RouterModule } from '@angular/router';
 import { IncidentEditComponent } from './incident-edit/incident-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+//import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +26,9 @@ import { IncidentEditComponent } from './incident-edit/incident-edit.component';
     IncidentAddComponent,
     LoginComponent,
     RegisterComponent,
-    IncidentEditComponent
+    IncidentEditComponent,
+    ReactiveFormsModule,
+    CommonModule
   ],
   template: `
   <main class="container">
@@ -37,5 +42,6 @@ import { IncidentEditComponent } from './incident-edit/incident-edit.component';
   `,
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent  {
+  
 }

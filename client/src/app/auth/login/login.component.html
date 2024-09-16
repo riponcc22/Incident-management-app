@@ -1,10 +1,5 @@
-<!-- login.component.html -->
-<!-- <main class="container">
-    Message Area--
-    <div *ngIf="messages.length > 0" class="alert alert-danger">
-      {{ messages }}
-    </div> -->
-  
+
+    
     <div class="row">
       <div class="offset-md-4 col-md-4">
         <h1>Please Login</h1>
@@ -14,32 +9,32 @@
             background-size: cover;
           }
         </style>
-         <form action="" method="POST" autocomplete="off">
-            <fieldset class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" class="form-control"
-                name="username" placeholder="Enter username"
-                id="username" required autofocus>
-            </fieldset>
-
-            <fieldset class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control"
-                name="password" placeholder="Enter password"
-                id="password" required >
-
+    
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <fieldset class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" formControlName="username" placeholder="Enter username" required autofocus>
+          </fieldset>
+    
+          <fieldset class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Enter password" required>
+          </fieldset>
+    
+          <div>
+            <!-- Link to registration page -->
             or Don't have an account?
             <a href="/register">Register Here</a>
-          </fieldset>
-  
+          </div>
+    
           <fieldset class="form-group text-right">
             <button type="submit" class="btn btn-success">Login</button>
-            <a routerLink="/">
-              <button type="button" class="btn btn-warning">Cancel</button>
-            </a>
+            <!-- Correct usage of routerLink for Cancel button -->
+            <button type="button" class="btn btn-warning" routerLink="/">Cancel</button>
           </fieldset>
+          
         </form>
       </div>
     </div>
-  
-  
+    
+    

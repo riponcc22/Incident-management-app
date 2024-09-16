@@ -1,18 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import routeConfig from './routes';
 import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
-import { ExpressService } from './express.service';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routeConfig) // Configure the router with your routes
   ],
-  providers: [ExpressService],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [] // No need for AppComponent in bootstrap, as it's standalone
 })
-export class AppModule { }
+export class AppModule {}
+
