@@ -141,7 +141,12 @@ let app = express();
 
 
 // Enable CORS for all routes
-app.use(cors()); // Add this line
+// app.use(cors()); // Add this line
+
+app.use(cors({
+  origin: 'http://localhost:4200',  // Update with your Angular frontend URL
+  credentials: true  // Allow credentials to be sent
+}));
 
 
 // view engine setup
@@ -162,8 +167,9 @@ app.use(express.static(path.join(__dirname, '../../node_modules')));
 // setup express session
 app.use(session({
   secret: "SomeSecret",
+  resave: false,
   saveUninitialized: false,
-  resave: false
+  cookie: { secure: false }  // Set secure: true in production (HTTPS)
 }));
 
 
@@ -217,6 +223,8 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error', { title: 'Error' });
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+
 });
 
 
