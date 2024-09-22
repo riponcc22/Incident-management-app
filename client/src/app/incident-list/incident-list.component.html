@@ -20,28 +20,25 @@
           <th class="text-center col-3">Incident</th>
           <th class="text-center col-2">Description</th>
           <th class="text-center col-3">Date</th>
-          <th class="text-center col-2"></th>
-          <th class="text-center col-2"></th>
+          <th *ngIf="isLoggedIn()" class="text-center col-2"></th>
+          <th *ngIf="isLoggedIn()" class="text-center col-2"></th>
         </tr>
-  
   
         <!-- Repeatable Template Row -->
         <tr class="d-flex" *ngFor="let incident of incidentList">
-        <td class="text-center col-3">{{ incident.incident }}</td>
-        <td class="text-center col-2">{{ incident.description }}</td>
-        <td class="text-center col-3">{{ incident.date }}</td>
-        <td class="text-center col-2">
-          <a [routerLink]="['/incident/edit', incident._id]" class="btn btn-primary btn-sm">
-            <i class="fas fa-pencil-alt"></i> Edit
-          </a>
-        </td>
-        <td class="text-center col-2">
-          <button *ngIf="incident._id" (click)="deleteIncident(incident._id)" class="btn btn-danger btn-sm">
-            <i class="fas fa-trash-alt"></i> Delete
-          </button>
-        </td>
-  
-  
+          <td class="text-center col-3">{{ incident.incident }}</td>
+          <td class="text-center col-2">{{ incident.description }}</td>
+          <td class="text-center col-3">{{ incident.date }}</td>
+          <td class="text-center col-2" *ngIf="isLoggedIn()">
+            <a [routerLink]="['/incident/edit', incident._id]" class="btn btn-primary btn-sm">
+              <i class="fas fa-pencil-alt"></i> Edit
+            </a>
+          </td>
+          <td class="text-center col-2" *ngIf="isLoggedIn()">
+            <button (click)="deleteIncident(incident._id)" class="btn btn-danger btn-sm">
+              <i class="fas fa-trash-alt"></i> Delete
+            </button>
+          </td>
         </tr>
       </table>
     </div>
