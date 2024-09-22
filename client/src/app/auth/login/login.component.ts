@@ -38,7 +38,7 @@ export class LoginComponent {
       this.expressService.loginUser(credentials).then(
         (response) => {
           // Store display name in localStorage for later use
-          localStorage.setItem('displayName', response.displayName);
+          localStorage.setItem('displayName', response.user.displayName);
           localStorage.setItem('token', response.token); // Assuming you're using a token
 
           alert('Login successful!');
